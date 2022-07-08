@@ -7,7 +7,10 @@ export default function CategoryItem({ categoryData = [
     { id: "id3", date: '072', name: "name3", type: "type" }] }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.date}>{categoryData[0].date}</Text>
+            <View style={styles.dateBox}>
+                <Text style={styles.date}>{categoryData[0].date}</Text>
+            </View>
+
             <FlatList
                 data={categoryData}
                 keyExtractor={(e) => e.id}
@@ -20,8 +23,22 @@ export default function CategoryItem({ categoryData = [
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: "column"
     },
     date: {
-        fontSize: 24
+        flex: -1,
+        fontSize: 24,
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        borderColor: "green"
+        , borderWidth: 1
+        , textAlignVertical: 'center',
+
+    },
+    dateBox: {
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
     }
+
 });

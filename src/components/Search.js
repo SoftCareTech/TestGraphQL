@@ -13,15 +13,15 @@ export default function Search({ value = "", onSearchChange }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: 'whitesmoke',
     },
     search: {
         height: 50
-        , outlinStyle: "none"
-        , borderColor: "blue"
-        , borderWidth: 1
-        , padding: 8
+        , outlineStyle: "none"
+        , borderColor: "#bfbfbf"
+        , borderWidth: 1,
+        backgroundColor: '#F5F5F5',
+        padding: 8
+        , textAlign: "center"
     }
 }); 

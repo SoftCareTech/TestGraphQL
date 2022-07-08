@@ -18,14 +18,20 @@ export default function ItemData({ data }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 6,
+        marginVertical: 8,
         flexDirection: 'row',
-        backgroundColor: "red"
     },
     box1: {
-        flex: 1
+        flex: -1,
+        backgroundColor: "#bfbfbf"
+        , marginRight: 8,
+        padding: 8
+
+
     },
     box2: {
+        padding: 8,
+        backgroundColor: "#F5F5F5",
         flexDirection: "row",
         justifyContent: 'space-between',
         flex: 2

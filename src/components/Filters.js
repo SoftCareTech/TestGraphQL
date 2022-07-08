@@ -5,18 +5,30 @@ export default function Filters({
     list = ["Java", "Kotlin", "C++", "JavaScript"],
     defaultSelection = [false, true, false, true],
     selectionChange = (list, sel) => console.log("Implement selection ") }) {
+
+
     if (defaultSelection.length !== list.length) console.error("Error selection must be set")
     const [selection, setSelection] = useState(defaultSelection)
+
     const itemPress = (item) => {
-        let newSele = selection; const index = list.indexOf(item)
+        var newSele = [...selection];
+        const index = list.indexOf(item)
         newSele[index] = !selection[index]
-        if (selectionChange) selectionChange(list, newSele);
+        console.log("Press Sel", selection)
+        if (selectionChange)
+            selectionChange(list, newSele);
         setSelection(newSele)
+
+        console.log("Press", newSele)
     }
-    return (
-        <View style={styles.container}>
-            {list.map((e) => (<Text key={e} onPress={() => itemPress(e)} style={styles.item}>{e}</Text>))}
-        </View>
+    return (<View style={styles.container}>
+        {list.map((e) => <Text key={e}
+            onPress={() => itemPress(e)}
+            style={selection[list.indexOf(e)] ?
+                styles.itemSelected : styles.item}>{e}
+        </Text>)}
+
+    </View>
     );
 }
 
@@ -24,11 +36,35 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: "row",
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
+        marginVertical: 16,
+        alignItems: "center"
     },
     item: {
-        flex: 1
-        , marginHorizontal: 4
+        flex: 1,
+        padding: 8
+
+        , borderColor: "#bfbfbf"
+        , borderWidth: 1,
+        textAlign: "center",
+        textAlignVertical: 'center',
+        marginHorizontal: 4
+    },
+    itemSelected: {
+
+        flex: 1,
+        padding: 8,
+        borderColor: "blue"
+        , borderWidth: 1
+        , textAlign: "center"
+        , textAlignVertical: 'center',
+        marginHorizontal: 4
+        , alignItems: 'center',
+        alignContent: "center",
+        justifyContent: 'center',
+        alignItems: "center"
+
+
     }
 });
 /*
