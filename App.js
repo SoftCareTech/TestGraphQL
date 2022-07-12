@@ -4,8 +4,9 @@ import MainScreen from './src/screens/MainScreen';
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 import { client } from './src/graphql/client';
 export default function App() {
+
   return <ApolloProvider client={client}>
-    <MainScreen />
+    <MainScreen open={true} />
   </ApolloProvider>
 
 

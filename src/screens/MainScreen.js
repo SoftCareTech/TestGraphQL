@@ -8,7 +8,7 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { useQuery, useLazyQuery, gql, NetworkStatus } from '@apollo/client';
 import { LOCATION, client, PERSONS } from "../graphql/client";
-export default function MainScreen() {
+export default function MainScreen({ open }) {
     //  const { loading, error, data } = useQuery(LOCATION);
     const listTypes = ["Java", "Kotlin", "C++", "JavaScript"]
 
@@ -32,15 +32,9 @@ export default function MainScreen() {
     });
 
 
-    const getData = () => {
-        refetch()
-    }
     useEffect(() => {
-
-        let isSubscribed = true;
-        if (isSubscribed) refetch()
-        return () => (isSubscribed = false)
-    }, [])
+        refetch()
+    }, [search, selected])
 
 
     if (error) return <><Text>'Error...' {error.message}</Text> </>
@@ -74,7 +68,6 @@ export default function MainScreen() {
     return <View style={styles.container}>
         <Search value={search} onSearchChange={(text) => {
             setSearch(text)
-            getData()
         }}
         />
 
@@ -82,7 +75,6 @@ export default function MainScreen() {
             defaultSelection={[true, true, true, true]}
             selectionChange={(selected) => {
                 setSelected(selected)
-                getData()
             }
             } />
         {networkStatus === NetworkStatus.refetch ? <Text>Refetching! </Text> : null}
