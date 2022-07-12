@@ -14,13 +14,16 @@ export default function Filters({
         var newSele = [...selection];
         const index = list.indexOf(item)
         newSele[index] = !selection[index]
-        console.log("Press Sel", selection)
-        if (selectionChange)
-            selectionChange(list, newSele);
         setSelection(newSele)
+        if (selectionChange) {
+            selectionChange(list.filter((v, i) => newSele[i]));
 
-        console.log("Press", newSele)
+        }
+
+
+        // console.log("Press newSele", list.filter((v, i) => newSele[i]))
     }
+    // console.log("render", list.filter((v, i) => selection[i]))
     return (<View style={styles.container}>
         {list.map((e) => <Text key={e}
             onPress={() => itemPress(e)}
@@ -34,7 +37,7 @@ export default function Filters({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: -1,
         flexDirection: "row",
         justifyContent: 'space-between',
         marginVertical: 16,

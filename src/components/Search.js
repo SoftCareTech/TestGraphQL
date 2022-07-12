@@ -12,7 +12,7 @@ export default function Search({ value = "", onSearchChange }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: -1,
         backgroundColor: 'whitesmoke',
     },
     search: {
